@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Question from './Question'
+import customData from './customData';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  createQuestions = () => {
+    return customData.stat_status_pairs.map(object => 
+      <Question
+        title={object.stat.question__title}
+        frequency={object.frequency}
+      />
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        {console.log(customData)}
+        {this.createQuestions()}
+      </div>
+    )
+  }
 }
+
 
 export default App;
